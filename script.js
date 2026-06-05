@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (emailBtn && copyTooltip) {
         emailBtn.addEventListener('click', () => {
-            const email = 'Mahith.official@gmail.com';
+            const email = 'mohan.official@gmail.com';
             navigator.clipboard.writeText(email).then(() => {
                 copyTooltip.textContent = 'Copied! ✅';
                 emailBtn.style.borderColor = 'var(--lego-green)';
@@ -209,7 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const interestQuotes = {
         physics: "🔭 Fact: Physics governs everything, from tiny subatomic particles to huge galaxy clusters. I love studying relativity!",
         math: "📐 Fact: The Golden Ratio occurs naturally in flowers, shells, and hurricanes. Mathematics is the code of nature!",
-        computer: "⚡ Fact: Every piece of software is built brick by brick with logical instructions, just like programming a Lego robot!"
+        computer: "⚡ Fact: Every piece of software is built brick by brick with logical instructions, just like programming a Lego robot!",
+        gaming: "⚔️ Fact: Minecraft lets you build anything block-by-block (just like Lego), while Blox Fruits tests your combat and strategy skills!"
     };
 
     focusCards.forEach(card => {

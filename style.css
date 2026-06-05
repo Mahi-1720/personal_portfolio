@@ -356,6 +356,7 @@ h1, h2, h3, h4, h5, h6 {
 .bg-yellow { background-color: var(--lego-yellow); }
 .bg-red { background-color: var(--lego-red); color: var(--white); }
 .bg-blue { background-color: var(--lego-blue); color: var(--white); }
+.bg-green { background-color: var(--lego-green); color: var(--white); }
 
 .hero-title {
     font-size: 64px;
@@ -483,10 +484,7 @@ h1, h2, h3, h4, h5, h6 {
 .microscope-build:hover { background-color: rgba(0, 85, 165, 0.1); }
 .cricket-build:hover { background-color: rgba(245, 197, 24, 0.1); }
 .bulb-build:hover { background-color: rgba(230, 0, 18, 0.1); }
-
-.bulb-build {
-    grid-column: span 2;
-}
+.gaming-build:hover { background-color: rgba(0, 150, 57, 0.1); }
 
 .build-icon {
     font-size: 36px;
@@ -674,6 +672,7 @@ section {
 .focus-tab.blue { background-color: var(--lego-blue); color: var(--white); }
 .focus-tab.yellow { background-color: var(--lego-yellow); color: var(--dark-neutral); }
 .focus-tab.red { background-color: var(--lego-red); color: var(--white); }
+.focus-tab.green { background-color: var(--lego-green); color: var(--white); }
 
 /* ==========================================================================
    SECTION 3: AWARDS & ACHIEVEMENTS
