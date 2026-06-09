@@ -81,34 +81,32 @@ body {
     transition: transform var(--transition-fast), filter var(--transition-fast), background-size 0.5s ease;
 }
 
-/* Glitch Trigger States applied via JavaScript */
+/* Slanted Slice Glitch System: Triggers on background grid layer when class is active */
 .global-glitch-active .grid-overlay {
-    animation: matrix-shuffle 0.25s linear infinite;
-    filter: hue-rotate(90deg) contrast(1.5);
+    animation: slanted-slice-glitch 0.4s steps(2) infinite;
+    filter: hue-rotate(280deg) saturate(2) contrast(1.2);
     background-image: radial-gradient(circle, rgba(255, 51, 102, 0.2) 2px, transparent 2px);
     background-size: 16px 16px;
 }
 
-.glitch-flash-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 240, 255, 0.03);
-    opacity: 0;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.global-glitch-active .glitch-flash-overlay {
-    animation: quick-flash 0.3s steps(2) infinite;
-}
-
-@keyframes matrix-shuffle {
-    0% { transform: translate(2px, -1px) skewX(2deg); }
-    50% { transform: translate(-3px, 1px) skewX(-4deg); }
-    100% { transform: translate(1px, 2px) skewX(0deg); }
+/* Diagonal sliced visual paths mimicking a system distortion shift */
+@keyframes slanted-slice-glitch {
+    0% {
+        clip-path: polygon(0 0, 100% 0, 100% 35%, 0 60%);
+        transform: translate(-4px, 2px) skewX(-6deg);
+    }
+    33% {
+        clip-path: polygon(0 30%, 100% 15%, 100% 85%, 0 70%);
+        transform: translate(6px, -4px) skewX(8deg);
+    }
+    66% {
+        clip-path: polygon(0 65%, 100% 50%, 100% 100%, 0 100%);
+        transform: translate(-2px, -2px) skewX(-3deg);
+    }
+    100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        transform: translate(0, 0) skewX(0);
+    }
 }
 
 @keyframes quick-flash {
