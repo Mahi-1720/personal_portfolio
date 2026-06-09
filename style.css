@@ -2,7 +2,7 @@
    DESIGN SYSTEM & VARIABLES
    ========================================================================== */
 :root {
-    /* Sophisticated Neo-Brutalist Colors - Cyber Accents */
+    /* Sci-Fi Lab Gamified Cyber Colors */
     --accent-yellow: #FFDD53;
     --accent-yellow-hover: #E6C800;
     --accent-red: #FF3366;
@@ -11,7 +11,7 @@
     --accent-blue-hover: #00CCE0;
     --accent-green: #00FF66;
     
-    /* Cyber Dark Neutrals */
+    /* Deep Core Lab Neutrals */
     --dark-neutral: #090B11;
     --dark-neutral-light: #161D2E;
     --light-neutral: #07090E;
@@ -21,7 +21,7 @@
     --grey-dark: #A5B6CE;
     --white-text: #FFFFFF;
     
-    /* Neo-Brutalist Layout Variables */
+    /* Neo-Brutalist Technical Interface Variables */
     --border-main: 3px solid var(--dark-neutral);
     --border-subtle: 1px solid var(--grey-light);
     --shadow-sm: 3px 3px 0px var(--dark-neutral);
@@ -30,12 +30,11 @@
     --radius-sm: 4px;
     --radius-md: 8px;
     
-    /* Font Families */
+    /* Technical Typography Fonts */
     --font-heading: 'Space Grotesk', sans-serif;
     --font-body: 'Plus Jakarta Sans', sans-serif;
     --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
     
-    /* Header Dimensions */
     --header-height: 80px;
 }
 
@@ -63,15 +62,15 @@ body {
     position: relative;
 }
 
-/* Structural Grid Overlay Pattern */
+/* Hologram Matrix Dot Pattern Overlay */
 .grid-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle, rgba(0, 240, 255, 0.05) 1.5px, transparent 1.5px);
-    background-size: 32px 32px;
+    background-image: radial-gradient(circle, rgba(0, 240, 255, 0.06) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
     pointer-events: none;
     z-index: 1;
 }
@@ -94,7 +93,7 @@ button, input, textarea {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY UTILITIES
+   TECHNICAL TYPOGRAPHY UTILITIES
    ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
@@ -122,18 +121,18 @@ h1, h2, h3, h4, h5, h6 {
     left: 0;
     width: 100%;
     height: 30%;
-    background-color: rgba(255, 221, 83, 0.25);
+    background-color: rgba(0, 240, 255, 0.2);
     z-index: -1;
 }
 
 /* ==========================================================================
-   BUTTONS & ACCENTS (Neo-Brutalist)
+   HUD INTERACTIVE COMPONENTS (Neo-Brutalist)
    ========================================================================== */
 .btn {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
     padding: 14px 28px;
     border: var(--border-main);
@@ -141,10 +140,12 @@ h1, h2, h3, h4, h5, h6 {
     cursor: pointer;
     transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .btn-primary {
-    background-color: var(--accent-yellow);
+    background-color: var(--accent-blue);
     color: var(--dark-neutral);
     box-shadow: var(--shadow-sm);
 }
@@ -152,7 +153,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
     transform: translate(-2px, -2px);
     box-shadow: 5px 5px 0px var(--dark-neutral);
-    background-color: var(--accent-yellow-hover);
+    background-color: var(--accent-blue-hover);
 }
 
 .btn-primary:active {
@@ -164,12 +165,14 @@ h1, h2, h3, h4, h5, h6 {
     background-color: var(--white);
     color: var(--grey-dark);
     box-shadow: var(--shadow-sm);
+    border-color: var(--grey-medium);
 }
 
 .btn-secondary:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px var(--accent-red);
+    box-shadow: 5px 5px 0px var(--accent-green);
     color: var(--white-text);
+    border-color: var(--dark-neutral);
 }
 
 .btn-secondary:active {
@@ -178,11 +181,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   NAVIGATION HEADER
+   NAVIGATION COMMAND HEADER
    ========================================================================== */
 .main-header {
     height: var(--header-height);
-    background-color: rgba(9, 11, 17, 0.85);
+    background-color: rgba(9, 11, 17, 0.9);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: var(--border-main);
@@ -202,48 +205,28 @@ h1, h2, h3, h4, h5, h6 {
     transition: padding 0.2s ease;
 }
 
-/* Logo Frame Layout */
 .logo-container {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 .logo-accent {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 20px;
-    color: var(--dark-neutral);
-    border: 2px solid var(--dark-neutral);
-    border-radius: var(--radius-sm);
-    box-shadow: 2px 2px 0px var(--dark-neutral);
-    position: relative;
-}
-
-.logo-accent.yellow { 
-    background-color: var(--accent-yellow); 
-    box-shadow: 0 0 10px rgba(255, 221, 83, 0.3);
-}
-.logo-accent.red { 
-    background-color: var(--accent-red); 
-    color: var(--white-text);
-    box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+    font-size: 24px;
+    filter: drop-shadow(0 0 8px var(--accent-yellow));
 }
 
 .logo-text {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 900;
-    font-size: 24px;
-    letter-spacing: 1px;
+    font-size: 22px;
+    letter-spacing: 1.5px;
     color: var(--white-text);
 }
 
-/* Nav Links Layout */
 .nav-links {
     display: flex;
     align-items: center;
@@ -251,42 +234,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-link {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 14px;
     padding: 8px 16px;
-    border: 2px solid transparent; /* Keeps physical layout metrics fixed during updates */
+    border: 2px solid transparent;
     border-radius: var(--radius-sm);
     transition: all 0.15s ease;
     color: var(--grey-dark);
 }
 
 .nav-link:hover {
-    background-color: rgba(0, 240, 255, 0.1);
+    background-color: rgba(0, 240, 255, 0.08);
     color: var(--accent-blue);
     border-color: var(--accent-blue);
 }
 
 .nav-link.active {
-    background-color: var(--accent-blue);
-    color: var(--dark-neutral);
-    border-color: var(--dark-neutral);
-    box-shadow: var(--shadow-sm);
+    background-color: var(--dark-neutral-light);
+    color: var(--accent-blue);
+    border: 2px solid var(--accent-blue);
+    box-shadow: inset 0 0 8px rgba(0, 240, 255, 0.2);
 }
 
 .btn-contact-nav {
     background-color: var(--accent-red);
     color: var(--white-text);
+    border: 2px solid var(--dark-neutral);
 }
 
 .btn-contact-nav:hover {
     background-color: var(--accent-red-hover);
     color: var(--white-text);
     transform: translateY(-2px);
-    box-shadow: 0 0 12px rgba(255, 51, 102, 0.4);
+    box-shadow: 0 0 14px rgba(255, 51, 102, 0.4);
 }
 
-/* Mobile Nav Button */
 .mobile-nav-toggle {
     display: none;
     flex-direction: column;
@@ -308,7 +291,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================================================
-   SECTION 1: HERO SECTION
+   SECTION 1: HERO CONTROL ROOM
    ========================================================================== */
 .hero-section {
     padding: 60px 0 100px;
@@ -331,25 +314,25 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .tag-badge {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     padding: 6px 12px;
     border: 2px solid var(--dark-neutral);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
 }
 
-/* High contrast text assignments for visibility validation standards */
 .bg-yellow { background-color: var(--accent-yellow); color: var(--dark-neutral); }
 .bg-red { background-color: var(--accent-red); color: var(--white-text); }
 .bg-blue { background-color: var(--accent-blue); color: var(--dark-neutral); }
 .bg-green { background-color: var(--accent-green); color: var(--dark-neutral); }
 
 .hero-title {
-    font-size: 64px;
+    font-size: 58px;
     margin-bottom: 24px;
-    color: var(--white-text); /* Rectified from dark-neutral to ensure visibility */
+    color: var(--white-text);
+    letter-spacing: -1px;
 }
 
 .hero-description {
@@ -372,7 +355,7 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateX(4px);
 }
 
-/* Showcase Panels */
+/* Sci-Fi Lab Visual Panel Component */
 .hero-illustration {
     position: relative;
     display: flex;
@@ -393,7 +376,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .illustration-banner {
-    background-color: var(--accent-yellow);
+    background-color: var(--dark-neutral);
     border-bottom: var(--border-main);
     height: 48px;
     display: flex;
@@ -403,26 +386,61 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .banner-dot {
-    width: 12px;
-    height: 12px;
-    background-color: var(--white);
-    border: 2px solid var(--dark-neutral);
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-red);
     border-radius: 50%;
+    animation: pulse-glow 1.5s infinite ease-in-out;
+}
+.banner-dot:nth-child(2) { background-color: var(--accent-yellow); animation-delay: 0.3s; }
+.banner-dot:nth-child(3) { background-color: var(--accent-green); animation-delay: 0.6s; }
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; filter: brightness(1.2); }
 }
 
 .banner-text {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 16px;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 13px;
     margin-left: auto;
     letter-spacing: 1px;
-    color: var(--dark-neutral);
+    color: var(--accent-blue);
 }
 
 .showcase-panel {
     background-color: var(--dark-neutral-light);
     padding: 36px 24px;
     position: relative;
+}
+
+/* Game Radar Grid Background Deco */
+.lab-grid-deco {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.laser-scanner {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(180deg, transparent, var(--accent-blue), transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: scanning 4s infinite linear;
+    opacity: 0.6;
+}
+
+@keyframes scanning {
+    0% { top: 0%; }
+    50% { top: 100%; }
+    100% { top: 0%; }
 }
 
 .workspace-modules {
@@ -434,45 +452,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .module-card {
-    background-color: var(--white);
-    border: var(--border-main);
+    background-color: rgba(16, 21, 36, 0.85);
+    border: 2px solid var(--grey-light);
     border-radius: var(--radius-sm);
-    padding: 16px;
+    padding: 20px 16px;
     text-align: center;
     box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
 .module-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 6px 6px 0px var(--dark-neutral);
+    transform: scale(1.04);
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
 
-.science-module:hover { background-color: rgba(0, 240, 255, 0.1); }
-.cricket-module:hover { background-color: rgba(255, 221, 83, 0.1); }
-.bulb-module:hover { background-color: rgba(255, 51, 102, 0.1); }
-.gaming-module:hover { background-color: rgba(0, 255, 102, 0.1); }
-
 .module-icon {
-    font-size: 36px;
-    margin-bottom: 8px;
+    font-size: 32px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));
 }
 
 .module-label {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 12px;
     color: var(--white-text);
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
-   GLOBAL LAYOUT SECTION TEMPLATE
+   GLOBAL LAYOUT SECTION ARRAYS
    ========================================================================== */
 section {
     padding: 100px 0;
     width: 100%;
-    overflow: hidden; /* Restricts horizontal content leaks across viewports */
+    overflow: hidden;
 }
 
 .section-header {
@@ -480,18 +496,19 @@ section {
 }
 
 .section-number {
-    font-family: var(--font-heading);
-    font-size: 18px;
-    font-weight: 900;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
     color: var(--accent-red);
     display: block;
     margin-bottom: 8px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
 .section-title {
-    font-size: 44px;
+    font-size: 40px;
     margin-bottom: 12px;
+    letter-spacing: -0.5px;
 }
 
 .section-subtitle {
@@ -500,7 +517,7 @@ section {
 }
 
 /* ==========================================================================
-   SECTION 2: EDUCATION
+   SECTION 2: KNOWLEDGE BASE (EDUCATION)
    ========================================================================== */
 .education-section {
     background-color: var(--white);
@@ -536,11 +553,10 @@ section {
 }
 
 .school-year {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
     color: var(--accent-red);
-    font-size: 14px;
-    text-transform: uppercase;
+    font-size: 13px;
     letter-spacing: 1px;
 }
 
@@ -569,12 +585,14 @@ section {
 }
 
 .school-badges .badge {
-    font-size: 12px;
-    font-weight: 600;
-    background-color: var(--white);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    background-color: var(--dark-neutral-light);
+    color: var(--white-text);
     border: var(--border-subtle);
     padding: 6px 12px;
-    border-radius: 20px;
+    border-radius: 4px;
 }
 
 .focus-areas-container {
@@ -583,8 +601,10 @@ section {
 }
 
 .sub-heading {
-    font-size: 22px;
+    font-family: var(--font-mono);
+    font-size: 18px;
     margin-bottom: 24px;
+    color: var(--accent-blue);
 }
 
 .focus-grid {
@@ -597,7 +617,7 @@ section {
     border: var(--border-main);
     border-radius: var(--radius-sm);
     padding: 20px;
-    background-color: var(--white);
+    background-color: var(--light-neutral);
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
@@ -611,6 +631,7 @@ section {
 .focus-card:hover {
     transform: translate(-3px, -3px);
     box-shadow: 6px 6px 0px var(--dark-neutral);
+    border-color: var(--accent-blue);
 }
 
 .focus-card-icon {
@@ -629,13 +650,13 @@ section {
 }
 
 .focus-tab {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 12px;
-    padding: 4px 8px;
+    font-size: 11px;
+    padding: 6px 10px;
     border: 2px solid var(--dark-neutral);
     border-radius: var(--radius-sm);
-    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .focus-tab.blue { background-color: var(--accent-blue); color: var(--dark-neutral); }
@@ -644,7 +665,7 @@ section {
 .focus-tab.green { background-color: var(--accent-green); color: var(--dark-neutral); }
 
 /* ==========================================================================
-   SECTION 3: AWARDS & ACHIEVEMENTS
+   SECTION 3: TELEMETRY REPORTS (ACHIEVEMENTS)
    ========================================================================== */
 .achievements-section {
     background-color: var(--light-neutral);
@@ -675,19 +696,19 @@ section {
     background-color: var(--light-neutral);
     border-radius: var(--radius-sm);
     margin-bottom: 20px;
+    color: var(--accent-blue);
 }
 
 .achievement-tag {
     display: block;
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 13px;
-    text-transform: uppercase;
+    font-size: 12px;
     letter-spacing: 1px;
     margin-bottom: 8px;
 }
 
-.tag-cricket { color: var(--accent-yellow-hover); }
+.tag-cricket { color: var(--accent-yellow); }
 .tag-academic { color: var(--accent-blue); }
 
 .achievement-title {
@@ -700,57 +721,81 @@ section {
     margin-bottom: 24px;
 }
 
-/* Scoreboard widget */
+/* Game Interface Scoreboard HUD widget */
 .scoreboard-widget {
     background-color: var(--dark-neutral);
     color: var(--white-text);
     border-radius: var(--radius-sm);
     padding: 20px;
-    border: 2px solid var(--grey-dark);
+    border: 2px solid var(--grey-light);
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+    position: relative;
+}
+
+.scoreboard-widget::before {
+    content: 'ONLINE_HUD';
+    position: absolute;
+    top: -10px;
+    right: 15px;
+    background-color: var(--accent-red);
+    color: var(--white-text);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.5px;
 }
 
 .scoreboard-title {
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
-    letter-spacing: 1.5px;
-    color: var(--accent-yellow);
+    letter-spacing: 1px;
+    color: var(--grey-medium);
     margin-bottom: 16px;
-    text-align: center;
+    text-align: left;
 }
 
 .scoreboard-stats {
     display: flex;
     justify-content: space-around;
     gap: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .stat-box {
     text-align: center;
+    background: rgba(255,255,255,0.02);
+    padding: 10px 20px;
+    border-radius: var(--radius-sm);
+    border: 1px solid rgba(255,255,255,0.05);
+    flex: 1;
 }
 
 .stat-number {
     display: block;
-    font-family: var(--font-heading);
-    font-size: 38px;
+    font-family: var(--font-mono);
+    font-size: 36px;
     font-weight: 900;
     color: var(--white-text);
+    text-shadow: 0 0 10px rgba(255,255,255,0.1);
 }
 
 .stat-label {
-    font-size: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
     color: var(--grey-medium);
 }
 
 .scoreboard-footer {
-    font-family: var(--font-heading);
-    font-size: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 700;
     text-align: center;
     color: var(--accent-yellow);
-    border-top: 1px dashed var(--grey-dark);
-    padding-top: 10px;
+    border-top: 1px dashed var(--grey-light);
+    padding-top: 12px;
 }
 
 .awards-list {
@@ -792,7 +837,7 @@ section {
 }
 
 /* ==========================================================================
-   SECTION 4: AMBITION
+   SECTION 4: MISSION BLUEPRINT (AMBITION)
    ========================================================================== */
 .ambition-section {
     background-color: var(--white);
@@ -820,30 +865,32 @@ section {
 }
 
 .quote-box {
-    border-left: 6px solid var(--accent-yellow);
-    padding: 16px 24px;
-    background-color: var(--light-neutral);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
     border: var(--border-main);
-    border-left: 6px solid var(--accent-yellow);
+    border-left: 6px solid var(--accent-blue);
+    padding: 20px 24px;
+    background-color: var(--light-neutral);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
 }
 
 .quote-header {
     font-family: var(--font-mono);
     font-size: 12px;
     font-weight: 700;
-    color: var(--accent-yellow);
-    margin-bottom: 6px;
+    color: var(--accent-blue);
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
 }
 
 .quote-text {
     font-family: var(--font-mono);
     font-size: 14px;
-    color: var(--white-text);
+    color: var(--accent-green);
+    line-height: 1.5;
 }
 
 /* ==========================================================================
-   SECTION 5: CONTACT
+   SECTION 5: COMMUNICATIONS TERMINAL (CONTACT)
    ========================================================================== */
 .contact-section {
     background-color: var(--light-neutral);
@@ -885,8 +932,10 @@ section {
 }
 
 .method-card h4 {
-    font-size: 16px;
+    font-family: var(--font-mono);
+    font-size: 15px;
     margin-bottom: 2px;
+    color: var(--white-text);
 }
 
 .method-card p {
@@ -913,9 +962,9 @@ section {
 
 .form-group label {
     display: block;
-    font-family: var(--font-heading);
+    font-family: var(--font-mono);
     font-weight: 700;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--white-text);
     margin-bottom: 8px;
 }
@@ -935,6 +984,7 @@ section {
     outline: none;
     border-color: var(--accent-blue);
     background-color: var(--dark-neutral);
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
 }
 
 .form-submit-btn {
@@ -943,7 +993,7 @@ section {
 }
 
 /* ==========================================================================
-   FOOTER MODULE
+   FOOTER TERMINAL
    ========================================================================== */
 .main-footer {
     background-color: var(--dark-neutral);
@@ -960,7 +1010,13 @@ section {
 }
 
 .copyright {
-    font-size: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+}
+
+.footer-links a {
+    font-family: var(--font-mono);
+    font-size: 13px;
 }
 
 .footer-links a:hover {
@@ -969,11 +1025,11 @@ section {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN SYSTEM (MEDIA QUERIES)
+   RESPONSIVE LAYOUT CONSTRAINTS
    ========================================================================== */
 @media (max-width: 992px) {
     .header-container {
-        padding: 0 16px; /* Injects mobile safety padding values */
+        padding: 0 16px;
     }
 
     .hero-grid {
@@ -996,7 +1052,7 @@ section {
     }
     
     .education-grid, .achievements-grid, .ambition-grid, .contact-grid {
-        display: grid; /* Forces browser engines to honor ordered parameters */
+        display: grid;
         grid-template-columns: 1fr;
         gap: 36px;
     }
@@ -1012,7 +1068,7 @@ section {
     }
     
     .hero-title {
-        font-size: 42px;
+        font-size: 40px;
     }
     
     section {

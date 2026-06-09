@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==========================================================================
-       MOBILE NAVIGATION TOGGLE
+       MOBILE COMMAND NAV TOGGLE
        ========================================================================== */
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
             mainNav.classList.toggle('show');
         });
 
-        // Close mobile menu when a nav link is clicked
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('open');
@@ -52,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /* ==========================================================================
-       STATISTICS TICKER (CRICKET SCOREBOARD)
+       STATISTICS TICKER (LAB SCOREBOARD INTERFACE)
        ========================================================================== */
     const statsSection = document.getElementById('achievements');
     const leagueStat = document.getElementById('stat-leagues');
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const animateNumber = (element, targetValue, duration, suffix = '') => {
         let start = 0;
-        // Rectifies small integer math bugs to maintain fluid increment streams
         const stepTime = Math.max(Math.floor(duration / (targetValue * 2)), 15);
         
         const timer = setInterval(() => {
@@ -89,15 +87,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       INTERACTIVE SCIENCE SANDBOX (LAB CONNECTIONS)
+       LAB READOUT MATRIX INTERACTION
        ========================================================================== */
     const focusCards = document.querySelectorAll('.focus-card');
     const labConsole = document.getElementById('lab-console');
     const interestQuotes = {
-        physics: "🔭 Telemetry: Physics governs structural interactions, from quantum mechanics to cosmic networks. Exploring general relativity variables!",
-        math: "📐 Telemetry: The Golden Ratio maps perfectly to natural frameworks. Advanced mathematics acts as the structural script of nature.",
-        computer: "⚡ Telemetry: Every digital micro-architecture compiles logically through clean expressions—building software arrays parameter by parameter.",
-        gaming: "📊 Telemetry: Minecraft tracks procedural grid layouts, while Blox Fruits evaluates immediate reflex processing and tactical combat metrics."
+        physics: ">> LINK_ESTABLISHED // TARGET: MECHANICAL REALITIES\n>> Data Stream: Analyzing subatomic kinetic behaviors and field-force vectors. Simulation running at 100% computational load.",
+        math: ">> LINK_ESTABLISHED // TARGET: LOGIC & QUANT\n>> Data Stream: Fractal equation structures and vector spaces verified. Numeric strings processing perfectly across mathematical nodes.",
+        computer: ">> LINK_ESTABLISHED // TARGET: AUTOMATION CODES\n>> Data Stream: Compiling binary components, testing asynchronous API logic, and debugging multi-threaded system loops.",
+        gaming: ">> LINK_ESTABLISHED // TARGET: PROCEDURAL SYSTEMS\n>> Data Stream: Grid coordinate rendering initialized in Minecraft world-arrays. Reflex processing values optimization active in Blox Fruits matrix."
     };
 
     focusCards.forEach(card => {
