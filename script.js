@@ -22,9 +22,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       SCROLL OBSERVER FOR ACTIVE NAV LINKS
+       SCROLL OBSERVER FOR ACTIVE NAV LINKS & ENTRANCE REVEAL
        ========================================================================== */
     const sections = document.querySelectorAll('section');
+    const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+    
     const navObserverOptions = {
         root: null,
         rootMargin: '-20% 0px -60% 0px', 
@@ -48,6 +50,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     sections.forEach(section => {
         navObserver.observe(section);
+    });
+
+    // Content entry fade elements setup
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    scrollRevealElements.forEach(el => {
+        revealObserver.observe(el);
     });
 
     /* ==========================================================================
@@ -91,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const focusCards = document.querySelectorAll('.focus-card');
     const labConsole = document.getElementById('lab-console');
+    const quoteBox = labConsole ? labConsole.closest('.quote-box') : null;
+    
     const interestQuotes = {
         physics: ">> LINK_ESTABLISHED // TARGET: MECHANICAL REALITIES\n>> Data Stream: Analyzing subatomic kinetic behaviors and field-force vectors. Simulation running at 100% computational load.",
         math: ">> LINK_ESTABLISHED // TARGET: LOGIC & QUANT\n>> Data Stream: Fractal equation structures and vector spaces verified. Numeric strings processing perfectly across mathematical nodes.",
@@ -107,12 +124,40 @@ document.addEventListener('DOMContentLoaded', () => {
                     labSection.scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => {
                         labConsole.textContent = interestQuotes[subject];
-                        labConsole.classList.add('reaction-active');
-                        setTimeout(() => labConsole.classList.remove('reaction-active'), 1200);
+                        if (quoteBox) {
+                            quoteBox.classList.add('reaction-pulsing');
+                            setTimeout(() => quoteBox.classList.remove('reaction-pulsing'), 500);
+                        }
                     }, 500);
                 }
             }
         });
     });
+
+    /* ==========================================================================
+       6-SECOND RECURRING AUTOMATIC SYSTEM GLITCH LOOP
+       ========================================================================== */
+    const runGlobalGlitchSequence = () => {
+        document.body.classList.add('global-glitch-active');
+        
+        // Temporarily mutate terminal console readout to signal anomalies
+        const originalConsoleValue = labConsole ? labConsole.textContent : '';
+        if (labConsole) {
+            labConsole.textContent = ">> WARNING: ENVIRONMENTAL INTERFERENCE DETECTED.\n>> Realignment vectors fluctuating. Matrix stabilization routine initiated...";
+            labConsole.style.color = 'var(--accent-red)';
+        }
+
+        // Clean up glitch trace states asynchronously after execution duration finishes
+        setTimeout(() => {
+            document.body.classList.remove('global-glitch-active');
+            if (labConsole) {
+                labConsole.textContent = originalConsoleValue;
+                labConsole.style.color = '';
+            }
+        }, 450);
+    };
+
+    // Initialize infinite timer stack running precisely every 6000ms
+    setInterval(runGlobalGlitchSequence, 6000);
 
 });

@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="grid-overlay"></div>
+    <div class="grid-overlay" id="matrix-grid"></div>
+    <div class="glitch-flash-overlay" id="glitch-flash"></div>
 
     <header class="main-header">
         <div class="header-container">
@@ -41,7 +42,7 @@
         
         <section id="hero" class="hero-section">
             <div class="container hero-grid">
-                <div class="hero-content">
+                <div class="hero-content fade-in-up">
                     <div class="badge-row">
                         <span class="tag-badge bg-yellow">[LVL 9] Academic Operator</span>
                         <span class="tag-badge bg-red">⚔️ Squad Captain</span>
@@ -49,7 +50,7 @@
                         <span class="tag-badge bg-green">🎮 Strategy Theorist</span>
                     </div>
                     
-                    <h1 class="hero-title">
+                    <h1 class="hero-title glitch-text-hover" data-text="Initializing Systems. Testing Realities.">
                         Initializing Systems. <br>
                         <span class="text-stroke">Testing Realities.</span>
                     </h1>
@@ -66,7 +67,7 @@
                     </div>
                 </div>
                 
-                <div class="hero-illustration">
+                <div class="hero-illustration fade-in-up delay-1">
                     <div class="showcase-frame-wrapper">
                         <div class="illustration-banner">
                             <span class="banner-dot"></span>
@@ -108,14 +109,14 @@
 
         <section id="education" class="education-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header scroll-reveal">
                     <span class="section-number">>> MODULE_01</span>
                     <h2 class="section-title">Knowledge Base</h2>
                     <p class="section-subtitle">Data indexes tracking academic progression pipelines and algorithmic models.</p>
                 </div>
                 
                 <div class="education-grid">
-                    <div class="school-card">
+                    <div class="school-card scroll-reveal">
                         <div class="card-header-accent red"></div>
                         <div class="school-card-body">
                             <span class="school-year">// SITE_LOCATION</span>
@@ -132,34 +133,42 @@
                         </div>
                     </div>
                     
-                    <div class="focus-areas-container">
+                    <div class="focus-areas-container scroll-reveal delay-1">
                         <h4 class="sub-heading">Select Diagnostic Stream</h4>
                         <div class="focus-grid">
                             <div class="focus-card" data-subject="physics">
                                 <div class="focus-card-icon">🌀</div>
-                                <h5>Mechanical Realities</h5>
-                                <p>Analyzing chemical thermodynamics, elemental compounds, and gravity waves.</p>
+                                <div>
+                                    <h5>Mechanical Realities</h5>
+                                    <p>Analyzing chemical thermodynamics, elemental compounds, and gravity waves.</p>
+                                </div>
                                 <span class="focus-tab blue">READ DATA</span>
                             </div>
                             
                             <div class="focus-card" data-subject="math">
                                 <div class="focus-card-icon">📊</div>
-                                <h5>Pure Logic & Quant</h5>
-                                <p>Synthesizing discrete mathematical structures, matrices, and spatial theorems.</p>
+                                <div>
+                                    <h5>Pure Logic & Quant</h5>
+                                    <p>Synthesizing discrete mathematical structures, matrices, and spatial theorems.</p>
+                                </div>
                                 <span class="focus-tab yellow">READ DATA</span>
                             </div>
                             
                             <div class="focus-card" data-subject="computer">
                                 <div class="focus-card-icon">💻</div>
-                                <h5>Automation Codes</h5>
-                                <p>Deploying programmatic frameworks, responsive design markup, and test environments.</p>
+                                <div>
+                                    <h5>Automation Codes</h5>
+                                    <p>Deploying programmatic frameworks, responsive design markup, and test environments.</p>
+                                </div>
                                 <span class="focus-tab red">READ DATA</span>
                             </div>
                             
                             <div class="focus-card" data-subject="gaming">
                                 <div class="focus-card-icon">🎮</div>
-                                <h5>Procedural Systems</h5>
-                                <p>Benchmarking high-efficiency item loadouts and logic scaling loops in simulated sandbox realms.</p>
+                                <div>
+                                    <h5>Procedural Systems</h5>
+                                    <p>Benchmarking high-efficiency item loadouts and logic scaling loops in simulated sandbox realms.</p>
+                                </div>
                                 <span class="focus-tab green">READ DATA</span>
                             </div>
                         </div>
@@ -170,7 +179,7 @@
 
         <section id="achievements" class="achievements-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header scroll-reveal">
                     <span class="section-number">>> MODULE_02</span>
                     <h2 class="section-title">Telemetry Reports</h2>
                     <p class="section-subtitle">Proven metrics and strategic output files verified inside the field and lab parameters.</p>
@@ -178,7 +187,7 @@
                 
                 <div class="achievements-grid">
                     
-                    <div class="achievement-card cricket-card">
+                    <div class="achievement-card cricket-card scroll-reveal">
                         <div class="card-header-accent yellow"></div>
                         <div class="achievement-card-body">
                             <div class="achievement-icon-wrapper">
@@ -207,7 +216,7 @@
                         </div>
                     </div>
 
-                    <div class="achievement-card science-card">
+                    <div class="achievement-card science-card scroll-reveal delay-1">
                         <div class="card-header-accent blue"></div>
                         <div class="achievement-card-body">
                             <div class="achievement-icon-wrapper">
@@ -236,13 +245,13 @@
 
         <section id="ambition" class="ambition-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header scroll-reveal">
                     <span class="section-number">>> MODULE_03</span>
                     <h2 class="section-title">Mission Blueprint</h2>
                     <p class="section-subtitle">Long-term roadmap for processing complex molecular simulations and virtual realities.</p>
                 </div>
                 
-                <div class="ambition-grid">
+                <div class="ambition-grid scroll-reveal">
                     <div class="ambition-info">
                         <p class="ambition-text-large">
                             Objective: Deploy cloud-scale structural computational arrays to decipher unknown molecular interaction configurations.
@@ -268,7 +277,7 @@
                 &copy; 2026 Mohan. System status: Online. Compiled in Neo-Brutalist Gamified Lab Syntax.
             </p>
             <div class="footer-links">
-                <a href="#hero">// Return to Zero</a>
+                <a href="#hero" class="return-zero-link">// Return to Zero</a>
             </div>
         </div>
     </footer>

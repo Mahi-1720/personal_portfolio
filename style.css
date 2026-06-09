@@ -36,6 +36,10 @@
     --font-mono: 'Fira Code', 'SF Mono', Consolas, monospace;
     
     --header-height: 80px;
+    
+    /* Transition Defaults */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-main: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ==========================================================================
@@ -60,9 +64,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+    transition: background-color var(--transition-fast);
 }
 
-/* Hologram Matrix Dot Pattern Overlay */
+/* Hologram Matrix Dot Pattern Overlay & Global Transitions */
 .grid-overlay {
     position: fixed;
     top: 0;
@@ -73,6 +78,42 @@ body {
     background-size: 24px 24px;
     pointer-events: none;
     z-index: 1;
+    transition: transform var(--transition-fast), filter var(--transition-fast), background-size 0.5s ease;
+}
+
+/* Glitch Trigger States applied via JavaScript */
+.global-glitch-active .grid-overlay {
+    animation: matrix-shuffle 0.25s linear infinite;
+    filter: hue-rotate(90deg) contrast(1.5);
+    background-image: radial-gradient(circle, rgba(255, 51, 102, 0.2) 2px, transparent 2px);
+    background-size: 16px 16px;
+}
+
+.glitch-flash-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 240, 255, 0.03);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.global-glitch-active .glitch-flash-overlay {
+    animation: quick-flash 0.3s steps(2) infinite;
+}
+
+@keyframes matrix-shuffle {
+    0% { transform: translate(2px, -1px) skewX(2deg); }
+    50% { transform: translate(-3px, 1px) skewX(-4deg); }
+    100% { transform: translate(1px, 2px) skewX(0deg); }
+}
+
+@keyframes quick-flash {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; background: rgba(255, 51, 102, 0.05); }
 }
 
 .container {
@@ -93,6 +134,37 @@ button, input, textarea {
 }
 
 /* ==========================================================================
+   ANIMATION STATES & ENTRANCE EFFECTS
+   ========================================================================== */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpTransform 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.15s; }
+.delay-2 { animation-delay: 0.3s; }
+
+@keyframes fadeInUpTransform {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Triggered reveal properties */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==========================================================================
    TECHNICAL TYPOGRAPHY UTILITIES
    ========================================================================== */
 h1, h2, h3, h4, h5, h6 {
@@ -105,6 +177,11 @@ h1, h2, h3, h4, h5, h6 {
 .text-stroke {
     -webkit-text-stroke: 2px var(--accent-blue);
     color: transparent;
+    transition: -webkit-text-stroke var(--transition-fast);
+}
+
+.global-glitch-active .text-stroke {
+    -webkit-text-stroke: 2px var(--accent-red);
 }
 
 .highlight-text {
@@ -123,6 +200,11 @@ h1, h2, h3, h4, h5, h6 {
     height: 30%;
     background-color: rgba(0, 240, 255, 0.2);
     z-index: -1;
+    transition: background-color var(--transition-fast);
+}
+
+.global-glitch-active .highlight-text::after {
+    background-color: rgba(255, 51, 102, 0.4);
 }
 
 /* ==========================================================================
@@ -138,7 +220,7 @@ h1, h2, h3, h4, h5, h6 {
     border: var(--border-main);
     border-radius: var(--radius-sm);
     cursor: pointer;
-    transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.15s ease, background-color var(--transition-fast);
     position: relative;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -151,33 +233,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .btn-primary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px var(--dark-neutral);
+    transform: translate(-3px, -3px);
+    box-shadow: 6px 6px 0px var(--dark-neutral);
     background-color: var(--accent-blue-hover);
 }
 
 .btn-primary:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px var(--dark-neutral);
-}
-
-.btn-secondary {
-    background-color: var(--white);
-    color: var(--grey-dark);
-    box-shadow: var(--shadow-sm);
-    border-color: var(--grey-medium);
-}
-
-.btn-secondary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 5px 5px 0px var(--accent-green);
-    color: var(--white-text);
-    border-color: var(--dark-neutral);
-}
-
-.btn-secondary:active {
-    transform: translate(2px, 2px);
-    box-shadow: 1px 1px 0px var(--dark-neutral);
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0px var(--dark-neutral);
 }
 
 /* ==========================================================================
@@ -192,6 +255,11 @@ h1, h2, h3, h4, h5, h6 {
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: border-color var(--transition-fast);
+}
+
+.global-glitch-active .main-header {
+    border-bottom-color: var(--accent-red);
 }
 
 .header-container {
@@ -202,7 +270,6 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: padding 0.2s ease;
 }
 
 .logo-container {
@@ -217,6 +284,11 @@ h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     font-size: 24px;
     filter: drop-shadow(0 0 8px var(--accent-yellow));
+    transition: transform var(--transition-main);
+}
+
+.logo-container:hover .logo-accent {
+    transform: rotate(20deg) scale(1.15);
 }
 
 .logo-text {
@@ -240,7 +312,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 8px 16px;
     border: 2px solid transparent;
     border-radius: var(--radius-sm);
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     color: var(--grey-dark);
 }
 
@@ -308,6 +380,12 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid var(--dark-neutral);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.tag-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 .bg-yellow { background-color: var(--accent-yellow); color: var(--dark-neutral); }
@@ -335,7 +413,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .icon-arrow {
-    transition: transform 0.15s ease;
+    transition: transform var(--transition-fast);
 }
 
 .btn-primary:hover .icon-arrow {
@@ -360,6 +438,12 @@ h1, h2, h3, h4, h5, h6 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform var(--transition-main), box-shadow var(--transition-main);
+}
+
+.showcase-frame-wrapper:hover {
+    transform: translateY(-4px) rotate(0.5deg);
+    box-shadow: 14px 14px 0px var(--dark-neutral);
 }
 
 .illustration-banner {
@@ -445,12 +529,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 20px 16px;
     text-align: center;
     box-shadow: var(--shadow-sm);
-    transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: all var(--transition-fast);
     cursor: pointer;
 }
 
 .module-card:hover {
-    transform: scale(1.04);
+    transform: scale(1.04) translateY(-2px);
     border-color: var(--accent-blue);
     box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
 }
@@ -459,6 +543,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 32px;
     margin-bottom: 12px;
     filter: drop-shadow(0 0 6px rgba(255,255,255,0.1));
+    transition: transform var(--transition-fast);
+}
+
+.module-card:hover .module-icon {
+    transform: scale(1.15) rotate(5deg);
 }
 
 .module-label {
@@ -524,6 +613,12 @@ section {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform var(--transition-main), box-shadow var(--transition-main);
+}
+
+.school-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .card-header-accent {
@@ -612,7 +707,7 @@ section {
     box-shadow: var(--shadow-sm);
     cursor: pointer;
     position: relative;
-    transition: all 0.15s ease;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
 }
 
 .focus-card:hover {
@@ -623,6 +718,11 @@ section {
 
 .focus-card-icon {
     font-size: 28px;
+    transition: transform var(--transition-fast);
+}
+
+.focus-card:hover .focus-card-icon {
+    transform: scale(1.2) rotate(-8deg);
 }
 
 .focus-card h5 {
@@ -633,7 +733,6 @@ section {
 .focus-card p {
     font-size: 14px;
     color: var(--grey-dark);
-    grid-column: 2;
 }
 
 .focus-tab {
@@ -644,12 +743,8 @@ section {
     border: 2px solid var(--dark-neutral);
     border-radius: var(--radius-sm);
     letter-spacing: 0.5px;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
-
-.focus-tab.blue { background-color: var(--accent-blue); color: var(--dark-neutral); }
-.focus-tab.yellow { background-color: var(--accent-yellow); color: var(--dark-neutral); }
-.focus-tab.red { background-color: var(--accent-red); color: var(--white-text); }
-.focus-tab.green { background-color: var(--accent-green); color: var(--dark-neutral); }
 
 /* ==========================================================================
    SECTION 3: TELEMETRY REPORTS (ACHIEVEMENTS)
@@ -670,6 +765,12 @@ section {
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-md);
     overflow: hidden;
+    transition: transform var(--transition-main), box-shadow var(--transition-main);
+}
+
+.achievement-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .achievement-card-body {
@@ -766,13 +867,7 @@ section {
     font-size: 36px;
     font-weight: 900;
     color: var(--white-text);
-    text-shadow: 0 0 10px rgba(255,255,255,0.1);
-}
-
-.stat-label {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--grey-medium);
+    text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
 
 .scoreboard-footer {
@@ -800,6 +895,11 @@ section {
     border: var(--border-subtle);
     border-radius: var(--radius-sm);
     background-color: var(--light-neutral);
+    transition: border-color var(--transition-fast);
+}
+
+.awards-item:hover {
+    border-color: var(--accent-blue);
 }
 
 .award-dot {
@@ -858,6 +958,18 @@ section {
     background-color: var(--light-neutral);
     border-radius: var(--radius-sm);
     box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), border-left-color var(--transition-fast);
+}
+
+.quote-box.reaction-pulsing {
+    animation: box-shiver 0.4s ease;
+    border-left-color: var(--accent-green);
+}
+
+@keyframes box-shiver {
+    0%, 100% { transform: scale(1); }
+    30% { transform: scale(1.01) translateX(-2px); }
+    70% { transform: scale(0.99) translateX(2px); }
 }
 
 .quote-header {
@@ -874,6 +986,7 @@ section {
     font-size: 14px;
     color: var(--accent-green);
     line-height: 1.5;
+    transition: color var(--transition-fast);
 }
 
 /* ==========================================================================
@@ -901,6 +1014,7 @@ section {
 .footer-links a {
     font-family: var(--font-mono);
     font-size: 13px;
+    transition: color var(--transition-fast);
 }
 
 .footer-links a:hover {
@@ -978,7 +1092,7 @@ section {
         flex-direction: column;
         padding: 40px 24px;
         gap: 20px;
-        transition: left 0.3s ease;
+        transition: left 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 99;
     }
     
