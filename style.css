@@ -845,28 +845,36 @@ section {
     text-align: left;
 }
 
+/* Aligns columns side-by-side perfectly on the horizontal axis and levels heights */
 .scoreboard-stats {
     display: flex;
-    justify-content: space-around;
-    gap: 12px;
-    margin-bottom: 16px;
+    justify-content: space-between;
+    align-items: center; 
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
 .stat-box {
     text-align: center;
     background: rgba(255,255,255,0.02);
-    padding: 10px 20px;
+    padding: 14px 10px;
     border-radius: var(--radius-sm);
     border: 1px solid rgba(255,255,255,0.05);
-    flex: 1;
+    flex: 1; /* Guarantees equal bounding layout grid space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .stat-number {
     display: block;
     font-family: var(--font-mono);
-    font-size: 36px;
+    font-size: 38px;
     font-weight: 900;
     color: var(--white-text);
+    line-height: 1.1;
+    margin-bottom: 6px;
     text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
 }
 
